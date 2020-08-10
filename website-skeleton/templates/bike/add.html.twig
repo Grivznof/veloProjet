@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BikeController!{% endblock %}
+{% block body %}
+
+{{form_start(form)}}
+
+<p>Nom</p>
+{{form_widget(form.name, {'attr': {'class': 'form-control'}})}}
+
+
+<p>Prix</p>
+{{form_widget(form.price, {'attr': {'class': 'form-control'}})}}
+
+
+<p>Description</p>
+{{form_widget(form.description, {'attr': {'class': 'form-control'}})}}
+
+<button type="submit" class="btn btn-success">Ajouter un Vélo ! </button> {{form_end(form)}}
+{% endblock %}
