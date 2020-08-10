@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %} {% block title %}Hello SecurityController!{% endblock %} {% block body %} {{form_start(form)}}
+
+
+
+
+<p>E-mail</p>
+{{form_widget(form.email)}}
+
+
+<p>Nom</p>
+{{form_widget(form.username)}}
+
+
+<p>Mot de Passe</p>
+{{form_widget(form.password)}}
+
+
+
+
+<button type="submit" class="btn btn-success">inscription ! </button> {{form_end(form)}} {% endblock %}
