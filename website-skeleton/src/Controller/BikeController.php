@@ -22,7 +22,19 @@ class BikeController extends AbstractController
             'controller_name' => 'BikeController',
             'bikes' => $bikes,
         ]);
-    }    
+    } 
+    
+    /**
+     * @Route("/velo/{id}", name="bike_show")
+     */
+    public function bikeShow(Bike $bike)
+    {
+
+        return $this->render('bike/show.html.twig', [
+            'controller_name' => 'BikeController',
+            'bike' => $bike,
+        ]);
+    } 
     
     /**
     * @Route("/velo/ajouter", name="bike_add")

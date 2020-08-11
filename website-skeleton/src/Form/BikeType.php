@@ -15,6 +15,7 @@ class BikeType extends AbstractType
             ->add('name')
             ->add('price')
             ->add('description')
+            ->add('img')
         ;
     }
 

@@ -7,13 +7,14 @@
 {% for bike in bikes %}
   
   <div class="card m-3 col-lg-3 col-sm-12">
-    <img class="card-img-top" src="..." alt="Card image cap">
+    <img class="card-img-top" src="{{bike.img}}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{bike.name}}</h5>
       <p class="card-text">{{bike.description}}</p>
     </div>
     <div class="card-footer">
       <small class="text-muted">Prix : {{bike.price}}</small>
+      <a href="{{ path('bike_show',{'id': bike.id}) }}" class="btn btn-primary m-3">Voir l'article</a>
     </div>
   </div>
 {% endfor %}

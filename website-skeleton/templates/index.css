@@ -1,5 +1,0 @@
-.card-columns {
-    @include media-breakpoint-only(lg) {
-        column-count: 4;
-    }
-}
