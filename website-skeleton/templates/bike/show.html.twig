@@ -9,7 +9,7 @@
         <img class="img-thumbnail " src="{{bike.img}}" alt="Card image cap">
         <h5 class="card-title">Prix : {{bike.price}}</h5>
         <p class="card-text">{{bike.description}}</p>
-        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+        <a href="{{ path('cart_add', {'id': bike.id}) }}" class="btn btn-primary">Ajouter au panier</a>
         <a href="#" class="btn btn-primary">Louer</a>
     </div>
 </div>
