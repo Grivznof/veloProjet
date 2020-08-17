@@ -45,6 +45,11 @@ class Comment
      */
     private $Bike;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $evaluate;
+
     public function __construct()
     {
         $this->likes = new ArrayCollection();
@@ -143,5 +148,17 @@ class Comment
         }
 
         return false;
+    }
+
+    public function getEvaluate(): ?string
+    {
+        return $this->evaluate;
+    }
+
+    public function setEvaluate(string $evaluate): self
+    {
+        $this->evaluate = $evaluate;
+
+        return $this;
     }
 }

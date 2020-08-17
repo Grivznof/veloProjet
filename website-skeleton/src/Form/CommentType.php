@@ -6,6 +6,7 @@ use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class CommentType extends AbstractType
 {
@@ -13,6 +14,15 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('content')
+            ->add('evaluate', ChoiceType::class, [
+                'choices'  => [
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5,
+                ],
+            ])
             ->add('name')
         ;
     }

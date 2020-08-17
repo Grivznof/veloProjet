@@ -17,7 +17,8 @@
     {% for comment in bike.comments%}
     <div class="card card-shadow">
         <div class="card-header">
-            {{comment.name}}
+            {{comment.name}} {{comment.evaluate}}
+            <i class="fas fa-star"></i>
         </div>
         <div class="card-body">
             <div>
@@ -50,9 +51,11 @@
     {{form_start(form)}}
     <p> Nom : </p>
     {{form_widget(form.name, {'attr': {'class': 'form-control'}})}}
+    <p> Évaluation : </p>
+    {{form_widget(form.evaluate, {'attr': {'class': 'form-control'}})}}
     <p> Contenu : </p>
-
     {{form_widget(form.content, {'attr': {'class': 'form-control'}})}}
+
     <div class="form-group">
         <button type="submit" class="btn btn-success">Envoyer le Commentaire</button>
     </div>
