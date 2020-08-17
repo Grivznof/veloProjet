@@ -111,9 +111,18 @@ class CartController extends AbstractController
         // Render the HTML as PDF
         $dompdf->render();
 
+        $headers = "From: velo-strasbourg@gmail.com \r\n";
+        $headers .= "Reply-To: velo-strasbourg@gmail.com \r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+        
+        mail('pbaillet9@gmail.com','facture',$html,$headers);
         // Output the generated PDF to Browser (force download)
         $dompdf->stream("mypdf.pdf", [
             "Attachment" => true
         ]);
+
+        return $this->redirectToRoute('bike');
     }
 }
