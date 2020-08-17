@@ -13,5 +13,50 @@
         <a href="#" class="btn btn-primary">Louer</a>
     </div>
 </div>
+<div class="p-3">
+    {% for comment in bike.comments%}
+    <div class="card card-shadow">
+        <div class="card-header">
+            {{comment.name}}
+        </div>
+        <div class="card-body">
+            <div>
+                {{comment.content}}
+            </div>
+            <div>
+                {% if not app.user%}
+                <i class="fas fa-thumbs-up"></i>
+                <span class="js-likes">{{comment.likes | length}}</span>
+                <span class="js-label">J'aime</span> {% else %}
+                <a href="{{ path('comment_like', {'id': comment.id } )}}" class="btn btn-link js-like">
+                    {% if app.user and comment.likedByUser(app.user) %}
+                    <i class="fas fa-thumbs-up"></i>
+                    {% else %}
+                    <i class="far fa-thumbs-up"></i>
+                    {% endif %}
+                    <span class="js-likes">{{comment.likes | length}}</span>
+                    <span class="js-label">J'aime</span>
+                </a> {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
-{% endblock %}
+<div class="p-3">
+
+    {%if app.user %}
+    <p>Commentaire</p>
+    {{form_start(form)}}
+    <p> Nom : </p>
+    {{form_widget(form.name, {'attr': {'class': 'form-control'}})}}
+    <p> Contenu : </p>
+
+    {{form_widget(form.content, {'attr': {'class': 'form-control'}})}}
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Envoyer le Commentaire</button>
+    </div>
+</div>
+
+
+{{form_end(form)}} {% endif %} {% endblock %}
