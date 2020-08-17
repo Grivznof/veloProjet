@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %} {% block title %}Hello CartController!{% endblock %} {% block body %} {% if items | length > 0 %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="invoice-title">
+                <h2>Facture</h2>
+                <h3 class="pull-right">Commande</h3>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-xs-6">
+                    <address>
+    				<strong>Commandé Par:</strong><br>
+    					{{user.username}}<br>
+    				</address>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Order summary</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <td><strong>Nom du vélo</strong></td>
+                                    <td class="text-center"><strong>Prix</strong></td>
+                                    <td class="text-center"><strong>Quantité</strong></td>
+                                    <td class="text-right"><strong>Total</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for bike in items %}
+                                <tr>
+                                    <td>{{ bike.product.name }}</td>
+                                    <td class="text-center">{{ bike.product.price}} €</td>
+                                    <td class="text-center">{{ bike.quantity}}</td>
+                                    <td class="text-right">{{ bike.product.price|number_format * bike.quantity|number_format }} €</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div>
+    <p>
+        Votre panier est vide
+    </p>
+</div>
+{% endif %} {% endblock %}
