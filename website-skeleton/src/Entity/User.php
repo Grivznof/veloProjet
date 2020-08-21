@@ -46,10 +46,23 @@ class User implements UserInterface
      */
     private $Likes;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @ORM\OneToMany(targetEntity=Rent::class, mappedBy="User")
+     */
+    private $rents;
+
+
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->Likes = new ArrayCollection();
+        $this->rents = new ArrayCollection();
     }
     
 
@@ -100,7 +113,7 @@ class User implements UserInterface
     public function getSalt() {}
 
     public function getRoles() {
-        return ['ROLE_USER'];
+        return $this->roles;
     }
 
     /**
@@ -152,16 +165,47 @@ class User implements UserInterface
         return $this;
     }
 
-    public function removeLike(CommentLike $like): self
+    public function setRoles(array $roles): self
     {
-        if ($this->Likes->contains($like)) {
-            $this->Likes->removeElement($like);
+        $this->roles = '["ROLE_USER"]';
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Rent[]
+     */
+    public function getRents(): Collection
+    {
+        return $this->rents;
+    }
+
+    public function addRent(Rent $rent): self
+    {
+        if (!$this->rents->contains($rent)) {
+            $this->rents[] = $rent;
+            $rent->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRent(Rent $rent): self
+    {
+        if ($this->rents->contains($rent)) {
+            $this->rents->removeElement($rent);
             // set the owning side to null (unless already changed)
-            if ($like->getUser() === $this) {
-                $like->setUser(null);
+            if ($rent->getUser() === $this) {
+                $rent->setUser(null);
             }
         }
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->Comments;
+    }
+
 }

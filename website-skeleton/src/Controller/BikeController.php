@@ -33,7 +33,7 @@ class BikeController extends AbstractController
     } 
     
     /**
-     * @Route("/velo/{id}", name="bike_show")
+     * @Route("/velo/achat/{id}", name="bike_show")
      */
     public function bikeShow(Request $request, Bike $bike, CommentRepository $repo)
     {
@@ -107,7 +107,8 @@ class BikeController extends AbstractController
            'form' => $form->createView(),
        ]);
    }
-   /**
+
+    /**
     * like and unlike a comment
     * @Route("/velo/comment/{id}/like", name="comment_like")
     */

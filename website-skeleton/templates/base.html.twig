@@ -26,9 +26,13 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="{{ path('bike') }}">Vélo Achat</a>
-                <a class="nav-item nav-link" href="#">Location</a> {%if not app.user %}
+                <a class="nav-item nav-link" href="{{ path('rent') }}">Location</a> {%if not app.user %}
                 <a class="nav-item nav-link" href="{{ path('security_login') }}">Connexion</a> {% else %}
                 <a class="nav-item nav-link" href="{{ path('security_logout') }}">Déconnexion</a> {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <a class="nav-item nav-link" href="/admin">Page Admin</a>
+                <a class="nav-item nav-link" href="{{ path('bike_add') }}">Ajouter un vélo</a>
+                 {% endif %}
             </div>
         </div>
     </nav>

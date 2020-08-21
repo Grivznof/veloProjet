@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RenController!{% endblock %}
+{% block body %}
+
+{{form_start(form)}}
+
+<p>Nombre de Vélo que vous souhaitez louer :</p>
+{{form_widget(form.bikeNbr, {'attr': {'class': 'form-control'}})}}
+
+
+<p>Nombre de jour de votre Location (7 € par jours) :</p>
+{{form_widget(form.dayNbr, {'attr': {'class': 'form-control'}})}}
+
+<p>Date de la début de la location :</p>
+{{form_widget(form.startDate, {'attr': {'class': 'form-control'}})}}
+
+<button type="submit" class="btn btn-success">Louer un Vélo ! </button> {{form_end(form)}}
+{% endblock %}
