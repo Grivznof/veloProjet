@@ -37,12 +37,14 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="author")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="author", cascade={"remove"})
+     * @ORM\joinColumn(onDelete="SET NULL")
      */
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity=CommentLike::class, mappedBy="User")
+     * @ORM\OneToMany(targetEntity=CommentLike::class, mappedBy="User", cascade={"remove"})
+     * @ORM\joinColumn(onDelete="SET NULL")
      */
     private $Likes;
 
@@ -52,7 +54,8 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @ORM\OneToMany(targetEntity=Rent::class, mappedBy="User")
+     * @ORM\OneToMany(targetEntity=Rent::class, mappedBy="User", cascade={"remove"})
+     * @ORM\joinColumn(onDelete="SET NULL")
      */
     private $rents;
 
@@ -165,13 +168,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function setRoles(array $roles): self
-    {
-        $this->roles = '["ROLE_USER"]';
-
-        return $this;
-    }
-
     /**
      * @return Collection|Rent[]
      */
@@ -204,4 +200,16 @@ class User implements UserInterface
     }
 
 
+
+    /**
+     * Set the value of roles
+     *
+     * @return  self
+     */ 
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
 }

@@ -40,7 +40,8 @@ class Bike
     private $img;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="Bike")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="Bike", cascade={"remove"})
+     * @ORM\joinColumn(onDelete="SET NULL")
      */
     private $comments;
 

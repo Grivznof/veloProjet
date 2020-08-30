@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class RentController extends AbstractController
 {
     /**
-     * @Route("/rent", name="rent")
+     * @Route("/location", name="rent")
      */
     public function index(Request $request)
     {

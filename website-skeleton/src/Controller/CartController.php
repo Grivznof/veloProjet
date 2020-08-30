@@ -116,13 +116,13 @@ class CartController extends AbstractController
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-        
-        mail('pbaillet9@gmail.com','facture',$html,$headers);
-        // Output the generated PDF to Browser (force download)
         $dompdf->stream("mypdf.pdf", [
             "Attachment" => true
         ]);
 
+        mail('pbaillet9@gmail.com','facture',$html,$headers);
+        // Output the generated PDF to Browser (force download)
+dd();
         return $this->redirectToRoute('bike');
     }
 }
