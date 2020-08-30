@@ -35,4 +35,5 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: /velo/ajouter, roles: ROLE_ADMIN }
+        - { path: /location/liste, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

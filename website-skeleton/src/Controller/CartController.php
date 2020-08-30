@@ -122,7 +122,7 @@ class CartController extends AbstractController
 
         mail('pbaillet9@gmail.com','facture',$html,$headers);
         // Output the generated PDF to Browser (force download)
-dd();
+        dd();
         return $this->redirectToRoute('bike');
     }
 }

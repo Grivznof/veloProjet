@@ -38,6 +38,7 @@
                     </svg>
                 </a> {% endif %} {% if is_granted('ROLE_ADMIN') %}
                 <a class="nav-item nav-link" href="/admin">Page Admin</a>
+                <a class="nav-item nav-link" href="{{path('rent_show')}}">Liste des Locations</a>
                 <a class="nav-item nav-link" href="{{ path('bike_add') }}">Ajouter un vélo</a> {% endif %}
             </div>
         </div>
