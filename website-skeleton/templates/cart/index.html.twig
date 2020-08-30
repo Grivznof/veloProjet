@@ -1,4 +1,6 @@
-{% extends 'base.html.twig' %} {% block title %}Hello CartController!{% endblock %} {% block body %} {% if items | length > 0 %}
+{% extends 'base.html.twig' %} {% block title %}Hello CartController!{% endblock %} {% block body %}
+{%if app.user %}
+ {% if items | length > 0 %}
 <table class="table">
     <thead>
         <tr>
@@ -33,4 +35,8 @@
         Votre panier est vide
     </p>
 </div>
+{% endif %}
+
+{% else %}
+Vous devez être connecté pour avoir accès à votre panier
 {% endif %} {% endblock %}
