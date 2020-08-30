@@ -2,3 +2,4 @@ easy_admin:
    entities:
        - App\Entity\User
        - App\Entity\Bike
+       - App\Entity\Rent
