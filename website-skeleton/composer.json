@@ -10,7 +10,7 @@
         "doctrine/doctrine-bundle": "^2.1",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.7",
-        "dompdf/dompdf": "^0.8.5",
+        "dompdf/dompdf": "^2.0.2",
         "easycorp/easyadmin-bundle": "^2.0",
         "fpdf/fpdf": "^1.82",
         "phpdocumentor/reflection-docblock": "^5.2",
